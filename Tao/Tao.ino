@@ -1,6 +1,6 @@
 #include <Wire.h>
 #include "SensorObjeto.h"
-#include <Adafruit_ADS1015.h>
+
 #define    MPU9250_ADDRESS            0x68
 #define    MAG_ADDRESS                0x0C
 #define    GYRO_FULL_SCALE_250_DPS    0x00
