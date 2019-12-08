@@ -132,7 +132,7 @@ int Sensor::calcularTemperatura(int adc) {
 
   // Pasamos los voltios que recibe el adc a bytes
   vol = ((lecturaAdc * 4096) / 32767) / 1000;
-
+  
   // Pasamos los bytes a temperatura
   temp = ((vol - 0.79) / 0.033);
 

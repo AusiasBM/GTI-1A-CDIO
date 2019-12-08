@@ -5,7 +5,7 @@
 Sensor sensores;
 
 // Constante que ponemos para decir el tiempo que va ha estar dormido (en segundos)
-const int sleepTimeS = 5;
+const int sleepTimeS = 2;
 
 // Pin de salinidad
 int salinity_power_pin = 5;
@@ -59,7 +59,7 @@ void loop() {
 
   // Llamamos a la función calcularTemperatura y nos calculará la temperatura que recibe el sensor
   Serial.println(sensores.calcularTemperatura(adcTemperatura)); // entra el adc 2
-
+  
   Serial.print("-----------DORMIR----------");
   ESP.deepSleep(sleepTimeS * 1000000); // Ponemos la placa en reposo para que no gaste batería.
 }
