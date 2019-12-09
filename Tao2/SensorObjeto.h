@@ -16,8 +16,6 @@ class Sensor {
     int calcularHumedad(int, double, double); //sale un int y le entran 3 variables.
     int calcularSalinidad(int, double, double, int);
     int calcularTemperatura(int);
-    void calcularLuminosidad();
-    void mostrarLuminosidad(double);
 
 };//Hasta aqui seria el punto.h.
 
@@ -139,54 +137,4 @@ int Sensor::calcularTemperatura(int adc) {
   temp = ((vol - 0.78) / 0.033);
 
   return temp;
-}
-
-/******************************************************************
-******************* Funciones Luminosidad ************************
-******************************************************************/
-
-void  mostrarLuminosidad(double luminosidad){
-
-   Serial.print("Hay una Luminosidad del ");
-   
-   if(luminosidad <= 100){
-    Serial.print(luminosidad);
-   }else{
-    luminosidad = 100;
-    Serial.print(luminosidad);
-  }
-  Serial.println(" %");
-
-  if(luminosidad < 1.50){
-    Serial.println("Por tanto o es de noche o hay mucha oscuridad.");}
-  
-  if(luminosidad > 1.50 && luminosidad < 50){
-    Serial.println("Por tanto es muy posible que esté ligeramente nublado o el dispositivo se encuentre bajo sombra.");}
-  
-  if(luminosidad > 50 && luminosidad < 90){
-    Serial.println("Por tanto el disposotivo se encuentra expuesto a una luz ambiente estándar.");}
-  
-  if(luminosidad >= 90 ){
-    Serial.println("Por tanto el dispositivo se encuentra expuesto a mucha luz.");}
-
-}
-
-void calcularLuminosidad(){
-
-  double adc3, lum, luminosidad;
-  int OscuridadValue = 0.027;
-  int SombraValue = 1.70;
-  int LuzValue = 2.40;
-  int MuchaLuzValue = 3.75;
-
-  adc3 = ads1115.readADC_SingleEnded(3);
-  
-  lum = ((adc3*4096)/32767)/1000;
-
-  luminosidad = 100*OscuridadValue/(OscuridadValue-MuchaLuzValue)-lum*100/(OscuridadValue-MuchaLuzValue);
-  
-  mostrarLuminosidad(luminosidad);
-  
-  //Serial.print("AIN0 Luminosidad: ");
-  //Serial.println(lum);
 }
